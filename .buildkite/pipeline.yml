@@ -1,0 +1,11 @@
+steps:
+  - label: ":hammer: Tests"
+    command: make test
+
+  - wait
+
+  - label: ":package: Build"
+    command: make build
+    artifact_paths: "bin/*"
+
+  - wait
