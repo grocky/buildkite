@@ -37,7 +37,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     BuildkiteTerminateInstanceAfterJobTimeout                 = 1800
     BuildkiteTerminateInstanceAfterJobDecreaseDesiredCapacity = "false"
     BuildkiteAdditionalSudoPermissions                        = ""
-    BuildkiteQueue                                            = "rockygray-com"
+    BuildkiteQueue                                            = "default"
     AgentsPerInstance                                         = 4
     SecretsBucket                                             = "" # auto create
     ArtifactsBucket                                           = "" # auto create
