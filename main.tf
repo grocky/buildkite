@@ -21,10 +21,6 @@ data "terraform_remote_state" "root" {
   }
 }
 
-variable "agent_token" {
-  description = "The buildkite agent token from the account in buildkite.com"
-}
-
 // sourced from: https://github.com/buildkite/elastic-ci-stack-for-aws/issues/246#issuecomment-399426091
 resource "aws_cloudformation_stack" "buildkite" {
   name = "buildkite"
@@ -84,10 +80,6 @@ resource "aws_cloudformation_stack" "buildkite" {
   template_body = file("${path.module}/cloudformation/aws-stack.yml")
 
   capabilities = ["CAPABILITY_IAM", "CAPABILITY_NAMED_IAM"]
-}
-
-variable "public_key" {
-  description = "The public key to allow EC2 ssh ingress."
 }
 
 resource "aws_key_pair" "buildkite" {
