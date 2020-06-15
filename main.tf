@@ -49,7 +49,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     InstanceType                                              = "c5.2xlarge"
     SpotPrice                                                 = "0"
     MaxSize                                                   = 3
-    MinSize                                                   = 1
+    MinSize                                                   = 0
     ScaleUpAdjustment                                         = 1
     ScaleDownAdjustment                                       = -1
     ScaleCooldownPeriod                                       = 300
