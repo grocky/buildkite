@@ -70,7 +70,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     EnableDockerUserNamespaceRemap                            = "true"
     EnableDockerExperimental                                  = "false"
     EnableCostAllocationTags                                  = "true"
-    CostAllocationTagName                                     = "App"
+    CostAllocationTagName                                     = "Application"
     CostAllocationTagValue                                    = "buildkite"
     EnableAgentGitMirrorsExperiment                           = "false"
     EnableExperimentalLambdaBasedAutoscaling                  = "false"
