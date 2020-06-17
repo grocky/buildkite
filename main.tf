@@ -37,7 +37,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     BuildkiteTerminateInstanceAfterJobTimeout                 = 1800
     BuildkiteTerminateInstanceAfterJobDecreaseDesiredCapacity = "false"
     BuildkiteAdditionalSudoPermissions                        = ""
-    BuildkiteQueue                                            = "rockygray-com"
+    BuildkiteQueue                                            = "default"
     AgentsPerInstance                                         = 4
     SecretsBucket                                             = "" # auto create
     ArtifactsBucket                                           = "" # auto create
@@ -49,7 +49,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     InstanceType                                              = "c5.2xlarge"
     SpotPrice                                                 = "0"
     MaxSize                                                   = 3
-    MinSize                                                   = 1
+    MinSize                                                   = 0
     ScaleUpAdjustment                                         = 1
     ScaleDownAdjustment                                       = -1
     ScaleCooldownPeriod                                       = 300
@@ -70,7 +70,7 @@ resource "aws_cloudformation_stack" "buildkite" {
     EnableDockerUserNamespaceRemap                            = "true"
     EnableDockerExperimental                                  = "false"
     EnableCostAllocationTags                                  = "true"
-    CostAllocationTagName                                     = "App"
+    CostAllocationTagName                                     = "Application"
     CostAllocationTagValue                                    = "buildkite"
     EnableAgentGitMirrorsExperiment                           = "false"
     EnableExperimentalLambdaBasedAutoscaling                  = "false"

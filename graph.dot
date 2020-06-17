@@ -1,0 +1,28 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_cloudformation_stack.buildkite" [label = "aws_cloudformation_stack.buildkite", shape = "box"]
+		"[root] aws_key_pair.buildkite" [label = "aws_key_pair.buildkite", shape = "box"]
+		"[root] data.terraform_remote_state.root" [label = "data.terraform_remote_state.root", shape = "box"]
+		"[root] output.secrets_bucket" [label = "output.secrets_bucket", shape = "note"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] provider.terraform" [label = "provider.terraform", shape = "diamond"]
+		"[root] var.agent_token" [label = "var.agent_token", shape = "note"]
+		"[root] var.public_key" [label = "var.public_key", shape = "note"]
+		"[root] aws_cloudformation_stack.buildkite" -> "[root] aws_key_pair.buildkite"
+		"[root] aws_cloudformation_stack.buildkite" -> "[root] var.agent_token"
+		"[root] aws_key_pair.buildkite" -> "[root] provider.aws"
+		"[root] aws_key_pair.buildkite" -> "[root] var.public_key"
+		"[root] data.terraform_remote_state.root" -> "[root] provider.terraform"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] data.terraform_remote_state.root"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.secrets_bucket"
+		"[root] output.secrets_bucket" -> "[root] aws_cloudformation_stack.buildkite"
+		"[root] provider.aws (close)" -> "[root] aws_cloudformation_stack.buildkite"
+		"[root] provider.terraform (close)" -> "[root] data.terraform_remote_state.root"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] provider.aws (close)"
+		"[root] root" -> "[root] provider.terraform (close)"
+	}
+}
+
